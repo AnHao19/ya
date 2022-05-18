@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>打电话</title>
 </head>
 <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
 <style>
@@ -82,25 +82,31 @@
 <body>
     <div class="bei">
         <!-- <img src="./bei.jpg" alt="" srcset=""> -->
-        <div class="diviel">车主手机号</div>
-        <div class="diviel2 Phone" id="Phone">没有收到手机号</div>
+        <div class="diviel" id="PhoneName">本人手机号</div>
+        <div class="diviel2" id="Phone">没有收到手机号</div>
         
         <button class="btndes but1" onclick="aar3()">点击拨打手机号</button>
     </div>
     <script>
         function aar2() {
+            // console.log(decodeURI(encodeURI('今天真好')),encodeURI('本人手机号'));
+            let PhoneName1 = document.getElementById("PhoneName");
             let Phone1 = document.getElementById("Phone");
             let url = window.location.href
             if (url.indexOf('?') != -1) {
                 let obj = {};
                 let arr = url.slice(url.indexOf('?') + 1).split('&');
+                console.log(arr);
                 arr.forEach(item => {
                     let param = item.split('=');
                     obj[param[0]] = param[1];
                 })
+                // console.log(obj,JSON.parse(JSON.stringify(obj)));
                 Phone1.innerHTML=obj.Phone||"没有收到手机号"
+                PhoneName1.innerHTML=decodeURI(obj.PhoneName)||"本人手机号"
                 return obj.Phone||-1
             } else {
+                PhoneName1.innerHTML="本人手机号"
                 Phone1.innerHTML="没有收到手机号"
                 return -1
             }
