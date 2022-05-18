@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
+<style>
+    .bei {
+        /* background: url(./bei.jpg) no-repeat 0px 0px; */
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .bei img {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+
+    .diviel {
+        width: 100%;
+        font-size: 32px;
+        font-weight: 900;
+        text-align: center;
+        position: absolute;
+        top: 10%;
+        left: 0px;
+        color: rgb(60, 0, 255);
+    }
+    .diviel2 {
+        width: 100%;
+        font-size: 32px;
+        font-weight: 900;
+        text-align: center;
+        position: absolute;
+        top: 15%;
+        left: 0px;
+        color: rgb(60, 0, 255);
+    }
+
+    .btndes {
+        display: inline-block;
+        margin-bottom: 0px;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        vertical-align: middle;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        transition: all 0.25s ease 0s;
+        text-decoration: none !important;
+        color: #fff;
+        background: #3366ff !important;
+        border-color: #3366ff !important;
+        outline: 0;
+        padding: 0 10px;
+        font-size: 12px;
+        line-height: 28px;
+        /* height: 28px; */
+    }
+
+    .but1 {
+        width: 100%;
+        padding: 20px;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        font-size: 20px;
+        font-weight: 900;
+    }
+</style>
+
+<body>
+    <div class="bei">
+        <!-- <img src="./bei.jpg" alt="" srcset=""> -->
+        <div class="diviel">车主手机号</div>
+        <div class="diviel2 Phone" id="Phone">没有收到手机号</div>
+        
+        <button class="btndes but1" onclick="aar3()">点击拨打手机号</button>
+    </div>
+    <script>
+        function aar2() {
+            let Phone1 = document.getElementById("Phone");
+            let url = window.location.href
+            if (url.indexOf('?') != -1) {
+                let obj = {};
+                let arr = url.slice(url.indexOf('?') + 1).split('&');
+                arr.forEach(item => {
+                    let param = item.split('=');
+                    obj[param[0]] = param[1];
+                })
+                Phone1.innerHTML=obj.Phone||"没有收到手机号"
+                return obj.Phone||-1
+            } else {
+                Phone1.innerHTML="没有收到手机号"
+                return -1
+            }
+        }
+        aar2()
+        function aar3(){
+            // let Phone1 = document.getElementById("Phone");
+            let Pho=aar2()
+            // console.log(aar2(),Pho);
+            if (Pho>-1) {
+                window.location.href='tel: '+Pho
+            }
+        }
+    </script>
+
+</body>
+
+</html>
